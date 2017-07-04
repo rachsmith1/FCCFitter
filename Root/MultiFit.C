@@ -113,7 +113,7 @@ void MultiFit::ReadConfigFile(string configFile,string options){
       fDir = param;
       if(fDir.back() != '/') fDir += '/';
       fOutDir = fDir + fName;
-      gSystem->mkdir(fName.c_str(), true);
+      gSystem->mkdir(fOutDir.c_str(), true);
     }
     else{
       fOutDir = "./" + fName;
@@ -455,6 +455,7 @@ std::map < std::string, double > MultiFit::FitCombinedWS(int fitType, string inp
 void MultiFit::GetCombinedLimit(string inputData){
     string wsFileName = fOutDir+"/ws_combined"+fSaveSuf+".root";
     string cmd;
+
     cmd = "root -l -b -q 'Roostat/runAsymptoticsCLs.C+(\""+wsFileName+"\",\"combWS\",\"ModelConfig\",\""+inputData+"\",\"asimovData_0\",\""+fOutDir+"/Limits/\",\""+fName+fSaveSuf+"\",0.95)'";
 
     //
