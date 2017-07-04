@@ -54,7 +54,7 @@ if __name__=="__main__":
         files_nom=glob.glob(ops.files_nom)
         masses_nom=getMasses(files_nom)
 
-    file_cms=[]
+    files_cms=[]
     masses_cms=[]
     if ops.files_cms!='': 
         files_cms=glob.glob(ops.files_cms)
@@ -83,8 +83,8 @@ if __name__=="__main__":
 
 
 
-    masses_nom, files_nom = (list(t) for t in zip(*sorted(zip(masses_nom, files_nom))))
-    masses_cms, files_cms = (list(t) for t in zip(*sorted(zip(masses_cms, files_cms))))
+    if len(masses_nom)>0:masses_nom, files_nom = (list(t) for t in zip(*sorted(zip(masses_nom, files_nom))))
+    if len(masses_cms)>0: masses_cms, files_cms = (list(t) for t in zip(*sorted(zip(masses_cms, files_cms))))
 
 
     XS=getXS(masses_nom, 'pp_Zprime_VALUETeV_ll')
@@ -169,13 +169,13 @@ if __name__=="__main__":
         ExpMed.append(histo.GetBinContent(2)*XS[i])
         masses_array.append(masses_nom[i])
 
-
-    gmed_cms  = r.TGraph(nmass, masses_array, ExpMed)
-    gmed_cms.SetName("exp_median")
-    gmed_cms.SetLineColor(1)
-    gmed_cms.SetLineStyle(3)
-    gmed_cms.SetLineWidth(3)
-    gmed_cms.Draw("L")
+    if len(masses_cms)>0:
+        gmed_cms  = r.TGraph(nmass, masses_array, ExpMed)
+        gmed_cms.SetName("exp_median")
+        gmed_cms.SetLineColor(1)
+        gmed_cms.SetLineStyle(3)
+        gmed_cms.SetLineWidth(3)
+        gmed_cms.Draw("L")
 
 
 
@@ -192,7 +192,7 @@ if __name__=="__main__":
     lg.AddEntry(gmed, "95% CL exp. limit FCC nom.", "L")
     lg.AddEntry(g1s,"95% CL exp. limit #pm1#sigma","F")
     lg.AddEntry(g2s,"95% CL exp. limit #pm2#sigma","F")
-    lg.AddEntry(gmed_cms, "95% CL exp. limit CMS", "L")
+    if len(masses_cms)>0: lg.AddEntry(gmed_cms, "95% CL exp. limit CMS", "L")
 
     lg.Draw()
 
