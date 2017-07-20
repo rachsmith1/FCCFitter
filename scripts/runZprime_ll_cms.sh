@@ -1,5 +1,5 @@
 for ene in 5 10 15 20 25 30 35 40 45 50;
 do
-    ./myFit.exe mwfl config_FCC/Zprime_ll_cms_combined/Zprime_ll_"$ene"TeV.config
+    ./myFit.exe mwfl config_FCC/Zprime_ll/cms_combined/Zprime_ll_"$ene"TeV.config
 done
 
