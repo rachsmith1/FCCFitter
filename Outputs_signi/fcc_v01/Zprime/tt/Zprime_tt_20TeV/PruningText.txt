@@ -1,0 +1,13 @@
+-------///////                 ///////-------
+-------/////// IN PRUNING PLOT ///////-------
+-------///////                 ///////-------
+In Region : SR
+ -> In Sample : vv
+ --->>  tt_xsec      is not present
+ --->>  vv_xsec      is norm only
+ -> In Sample : tt
+ --->>  tt_xsec      is norm only
+ --->>  vv_xsec      is not present
+ -> In Sample : Zprime
+ --->>  tt_xsec      is not present
+ --->>  vv_xsec      is not present

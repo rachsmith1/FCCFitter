@@ -6,7 +6,7 @@ from math import sin
 from os import listdir
 import glob
 import optparse
-procDict='/afs/cern.ch/work/h/helsens/public/FCCDicts/procDict.json'
+procDict='/afs/cern.ch/work/h/helsens/public/FCCDicts/procDict_fcc_v01.json'
 
 #__________________________________________________________
 def getMasses(limit_files):
@@ -45,6 +45,7 @@ if __name__=="__main__":
     parser.add_option('-n', '--name', dest='name', type=str, default='')
     parser.add_option('-p', '--plotname', dest='plotname', type=str, default='')
     parser.add_option('-c', '--file_cms', dest='files_cms', type=str, default='')
+    parser.add_option('-t', '--type', dest='type', type=str, default='')
 
     ops, args = parser.parse_args()
     args = split_comma_args(args)
@@ -83,11 +84,11 @@ if __name__=="__main__":
 
 
 
-    if len(masses_nom)>0:masses_nom, files_nom = (list(t) for t in zip(*sorted(zip(masses_nom, files_nom))))
+    if len(masses_nom)>0: masses_nom, files_nom = (list(t) for t in zip(*sorted(zip(masses_nom, files_nom))))
     if len(masses_cms)>0: masses_cms, files_cms = (list(t) for t in zip(*sorted(zip(masses_cms, files_cms))))
 
 
-    XS=getXS(masses_nom, 'pp_Zprime_VALUETeV_ll')
+    XS=getXS(masses_nom, 'pp_Zprime_VALUETeV_{}'.format(ops.type))
     nmass=len(files_nom)
 
     ExpMed = array( 'd' )
@@ -113,6 +114,9 @@ if __name__=="__main__":
     gtheo = r.TGraph(nmass, masses_array, XS)
 
 
+    #masses_nom[0] = 5
+    #masses_nom[-1] = 15
+
     gmed.SetName("exp_median")
     gmed.SetLineColor(1)
     gmed.SetLineStyle(2)
@@ -120,6 +124,9 @@ if __name__=="__main__":
     gmed.SetTitle( 'Limit versus mass' )
     gmed.GetXaxis().SetTitle( 'Mass [TeV]' )
     gmed.GetYaxis().SetTitle( '#sigma(pp #rightarrow Z\')*BR [pb]' )
+
+    print masses_nom[0]
+    print masses_nom[-1]
     gmed.GetXaxis().SetLimits(masses_nom[0], masses_nom[-1])
     gmed.SetMinimum(min(ExpMed[-1],ExpM1[-1],ExpP1[-1],ExpM2[-1],ExpP2[-1],XS[-1])*0.1)
     gmed.SetMaximum(max(ExpMed[0],ExpM1[0],ExpP1[0],ExpM2[0],ExpP2[0],XS[0])*10.)
@@ -158,7 +165,7 @@ if __name__=="__main__":
 #################################################
 
 
-    XS=getXS(masses_cms, 'pp_Zprime_VALUETeV_ll')
+    XS=getXS(masses_cms, 'pp_Zprime_VALUETeV_{}'.format(ops.type))
     nmass=len(files_cms)
 
     ExpMed = array( 'd' )
@@ -204,7 +211,7 @@ if __name__=="__main__":
     label.SetTextAlign(12)
     label.DrawLatex(0.24,0.85, "FCC simulation")
     label.DrawLatex(0.24,0.79, "\sqrt{s}=100TeV")
-    label.DrawLatex(0.24,0.73, "\int Ldt=30ab^{-1}")
+    label.DrawLatex(0.24,0.73, "\int Ldt=10ab^{-1}")
     label.DrawLatex(0.24,0.15, ops.plotname)
 
 

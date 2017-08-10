@@ -20,8 +20,8 @@ def getMassDisco(signiDict):
         lumi=[]
         print m
         for i in indict[m]:
-            signi.append(i['signi'])
-            lumi.append(i['lumi'])
+            signi.append( (i['signi']) )
+            lumi.append( (i['lumi']) )
         print signi
         print lumi
 
@@ -33,10 +33,11 @@ def getMassDisco(signiDict):
         plt.plot(lumi, signi, 'o-', xnew, f(xnew), '-')
         plt.plot([min(lumi), max(lumi)], [5, 5], 'k-', lw=2)
         plt.plot([min(lumi), max(lumi)], [3, 3], 'k-', lw=2)            
-        plt.xlabel('luminosity fb$^{-1}')
-        plt.ylabel('significance sigma')
+        plt.xlabel('luminosity (fb$^{-1}$)')
+        plt.ylabel('significance ($\sigma$)')
         plt.grid(True)
         plt.savefig('Signi_%s.eps'%(m,))
+	plt.savefig('Signi_%s.png'%(m,))
         plt.close()
 
 
@@ -46,12 +47,13 @@ def getMassDisco(signiDict):
         plt.plot(signi, lumi, 'o-', xnew, f(xnew), '-')
         plt.plot([5,5],[min(lumi), max(lumi)], 'k-', lw=2)
         plt.plot([3,3],[min(lumi), max(lumi)], 'k-', lw=2)            
-        plt.ylabel('luminosity fb$^{-1}')
-        plt.xlabel('significance sigma')
+        plt.ylabel('luminosity (fb$^{-1}$)')
+        plt.xlabel('significance ($\sigma$)')
         plt.grid(True)
         discolumi = f(5) if xnew[-1]>5.0 else f(xnew[-1])
         plt.plot([0,5],[discolumi, discolumi], 'k-', lw=2)            
         plt.savefig('SigniInverse_%s.eps'%(m,))
+	plt.savefig('SigniInverse_%s.png'%(m,))
         print 'lumi = %f'%discolumi
         plt.close()
 

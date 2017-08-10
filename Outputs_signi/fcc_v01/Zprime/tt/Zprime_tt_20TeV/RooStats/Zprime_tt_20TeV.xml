@@ -1,0 +1,17 @@
+<!--
+This xml file created automatically on: 
+2017-8-10
+-->
+<!DOCTYPE Combination  SYSTEM 'HistFactorySchema.dtd'>
+
+<Combination OutputFilePrefix="Outputs_signi/fcc_v01/Zprime/tt/Zprime_tt_20TeV/RooStats/Zprime_tt_20TeV" >
+
+
+  <Input>./Outputs_signi/fcc_v01/Zprime/tt/Zprime_tt_20TeV/RooStats//Zprime_tt_20TeV_SR.xml</Input>
+
+  <Measurement Name="Zprime_tt_20TeV" Lumi="1" LumiRelErr="0.1" ExportOnly="True"  >
+    <POI>SigXsecOverSM</POI>  
+    <ParamSetting Const="True">Lumi</ParamSetting>
+  </Measurement> 
+
+</Combination>

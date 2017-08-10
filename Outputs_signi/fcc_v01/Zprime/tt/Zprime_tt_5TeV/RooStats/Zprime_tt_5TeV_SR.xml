@@ -1,0 +1,32 @@
+<!--
+This xml file created automatically on: 
+2017-8-10
+-->
+<!DOCTYPE Channel  SYSTEM 'HistFactorySchema.dtd'>  
+
+  <Channel Name="SR" InputFile="" >
+
+    <Data HistoName="" InputFile="" HistoPath=""  /> 
+
+    <StatErrorConfig RelErrorThreshold="0.05" ConstraintType="Gaussian" /> 
+
+    <Sample Name="vv"  HistoPath=""  HistoName="SR_vv_regBin"  InputFile="Outputs_signi/fcc_v01/Zprime/tt/Zprime_tt_5TeV/Histograms/Zprime_tt_5TeV_histos.root"  NormalizeByTheory="True" >
+      <StatError Activate="True"  InputFile=""  HistoName=""  HistoPath=""  /> 
+      <OverallSys Name="vv_xsec"  High="1.1"  Low="0.9"   /> 
+    </Sample>
+
+
+    <Sample Name="tt"  HistoPath=""  HistoName="SR_tt_regBin"  InputFile="Outputs_signi/fcc_v01/Zprime/tt/Zprime_tt_5TeV/Histograms/Zprime_tt_5TeV_histos.root"  NormalizeByTheory="True" >
+      <StatError Activate="True"  InputFile=""  HistoName=""  HistoPath=""  /> 
+      <OverallSys Name="tt_xsec"  High="1.1"  Low="0.9"   /> 
+    </Sample>
+
+
+    <Sample Name="Zprime"  HistoPath=""  HistoName="SR_Zprime_regBin"  InputFile="Outputs_signi/fcc_v01/Zprime/tt/Zprime_tt_5TeV/Histograms/Zprime_tt_5TeV_histos.root"  NormalizeByTheory="True" >
+      <StatError Activate="True"  InputFile=""  HistoName=""  HistoPath=""  /> 
+      <NormFactor Name="SigXsecOverSM"  Val="1"  High="1000"  Low="-1000"  Const="False"   /> 
+    </Sample>
+
+
+
+  </Channel>  

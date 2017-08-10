@@ -186,8 +186,11 @@ if __name__=="__main__":
 
     nsig=10
     nsigstart=0
+    #lumies_high=[1, 2, 4, 7, 10]
+    #lumies_high=[10, 20, 30, 40, 50]
+    #lumies_high=[10, 11, 12, 13, 14]
     lumies_high=[1, 2, 4, 7, 10]
-    lumies_low=[0.05, 0.1, 0.2, 0.5]
+    lumies_low=[0.05, 0.1, 0.2, 0.5, 1, 2, 4]
 
     lumistart=10
     tobreak=False
